@@ -1,3 +1,8 @@
 <h1><%= @article.title %></h1>
 <p><%= @article.body %></p>
+
 <%= link_to "<< Voltar", articles_path %>
+
+<%= link_to "delete", article_path(@article), method: :delete, data: {confirm: "Realmente quer excluir esse artigo?"} %>
+
+<%= link_to "edit", edit_article_path(@article) %>
