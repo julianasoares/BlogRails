@@ -1,0 +1,19 @@
+<h1>Novo artigo</h1>
+<%= form_for(@article) do |f| %>
+  <ul>
+  <% @article.errors.full_messages.each do |error| %>
+    <li><%= error %></li>
+  <% end %>
+  </ul>
+  <p>
+    <%= f.label :Título %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :Texto %><br />
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
