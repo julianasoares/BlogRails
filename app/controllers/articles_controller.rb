@@ -7,6 +7,9 @@ class ArticlesController < ApplicationController
 
 	def show
 		@article = Article.find(params[:id])
+
+		@comment = Comment.new
+		@comment.article_id = @article.id
 	end
 
 	def new
@@ -18,17 +21,15 @@ class ArticlesController < ApplicationController
 		@article.save
 
 		flash.notice = "Artigo '#{@article.title}' criado!" 
-# Mensagem em flash
-
+		# Mensagem em flash
 		redirect_to article_path(@article)
 	end
 
 	def destroy
 		@article = Article.find(params[:id])
 		@article.destroy
-
+		# Mensagem em flash
 		flash.notice = "Artigo '#{@article.title}' deletado!" 
-# Mensagem em flash
 
 		redirect_to articles_path
 	end
@@ -40,12 +41,11 @@ class ArticlesController < ApplicationController
 	def update
 		@article = Article.find(params[:id])
 		@article.update(article_params)
-
+		# Mensagem em flash
 		flash.notice = "Artigo '#{@article.title} atualizado!" 
-# Mensagem em flash
 
+		# Usando o article_params para atualizar somente os atributos permitidos.
 		redirect_to article_path(@article)
-# Usando o article_params para atualizar somente os atributos permitidos.
 	end
 
 end
